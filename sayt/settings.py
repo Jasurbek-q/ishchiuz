@@ -53,20 +53,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sayt.wsgi.application'
 
+import dj_database_url
 
-# settings.py ichidagi DATABASES qismi
-# settings.py ichidagi DATABASES qismi
 if os.environ.get('DATABASE_URL'):
     DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
-            ssl_config={'sslmode': 'prefer'}
-        )
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',  # To'g'rilangan qator
+            'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }

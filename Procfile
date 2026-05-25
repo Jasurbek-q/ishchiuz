@@ -1,1 +1,1 @@
-web: gunicorn sayt.wsgi --log-file -
+web: python manage.py migrate && python create_admin.py && gunicorn sayt.wsgi
