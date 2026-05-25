@@ -4,7 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MEDIA_URL  = '/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SECRET_KEY = 'django-insecure-i@z0e--+^@kb-ubg+xodlhlc!k8)wlch5h0jtz!hjq%@_r%%9#'
@@ -35,6 +35,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'sayt.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -52,10 +53,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sayt.wsgi.application'
 
+
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600
+        conn_max_age=600,
+        ssl_require=False
     )
 }
 
