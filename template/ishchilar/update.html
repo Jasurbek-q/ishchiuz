@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Tahrirlash</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background: #f4f4f4; }
+        .form-box { background: white; padding: 25px; border-radius: 8px; max-width: 450px; }
+        label { display: block; margin-top: 12px; color: #555; }
+        input { width: 100%; padding: 9px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn-submit { margin-top: 18px; background: #2196F3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
+        .btn-back { display: inline-block; margin-top: 10px; color: gray; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>✏️ Ishchini Tahrirlash</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Ism:</label>
+            <input type="text" name="name" value="{{ worker.name }}" required>
+
+            <label>Familiya:</label>
+            <input type="text" name="surname" value="{{ worker.surname }}" required>
+
+            <label>Yosh:</label>
+            <input type="number" name="age" value="{{ worker.age }}" required min="16" max="80">
+
+            <label>Sohasi:</label>
+            <input type="text" name="sohasi" value="{{ worker.sohasi }}" required>
+
+            <button type="submit" class="btn-submit">✅ Yangilash</button>
+        </form>
+        <a href="{% url 'ishchilar_list' %}" class="btn-back">← Orqaga</a>
+    </div>
+</body>
+</html>

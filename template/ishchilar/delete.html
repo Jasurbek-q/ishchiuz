@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>O'chirish</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background: #f4f4f4; }
+        .box { background: white; padding: 25px; border-radius: 8px; max-width: 400px; text-align: center; }
+        .btn-confirm { background: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-back { background: #9E9E9E; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>🗑️ O'chirishni tasdiqlang</h2>
+        <p><strong>{{ worker.name }} {{ worker.surname }}</strong> ni o'chirmoqchimisiz?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn-confirm">Ha, O'chir</button>
+            <a href="{% url 'ishchilar_list' %}" class="btn-back">Bekor qilish</a>
+        </form>
+    </div>
+</body>
+</html>
