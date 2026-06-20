@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'ishchilar/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">{{ foydalanuvchi.ism }} {{ foydalanuvchi.familiya }}</h2>
+                <h6 class="card-subtitle mb-3 text-muted">Email: {{ foydalanuvchi.email }}</h6>
+                <hr>
+
+                <p><strong>Yoshi:</strong> {{ foydalanuvchi.yosh }} yoshda</p>
+                <p><strong>Tizimdagi holati:</strong>
+                    <span class="badge {% if foydalanuvchi.holat == 'faol' %}bg-success{% elif foydalanuvchi.holat == 'nofaol' %}bg-secondary{% else %}bg-danger{% endif %}">
+                        {{ foydalanuvchi.get_holat_display }} </span>
+                </p>
+
+                <p><strong>Biografiya:</strong></p>
+                <div class="p-3 bg-light rounded">
+                    {% if foydalanuvchi.bio %}
+                        {{ foydalanuvchi.bio|linebreaks }}
+                    {% else %}
+                        <em class="text-muted">Biografiya kiritilmagan.</em>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'foydalanuvchi_list' %}" class="btn btn-primary">Ro'yxatga qaytish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

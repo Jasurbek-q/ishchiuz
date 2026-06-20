@@ -1,4 +1,24 @@
+from django.contrib.auth.hashers import make_password
 from django.db import models
+from django.contrib.auth.hashers import make_password
+
+
+class Foydalanuvchi(models.Model):
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    age = models.IntegerField(default=0)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=225 , default='')
+
+    def __str__(self):
+        return self.name
+
+    def set_password(self, raw_password):
+        self.password = make_password(raw_password)
+
+    def check_password(self, raw_password):
+        from django.contrib.auth.hashers import check_password
+        return check_password(raw_password, self.password)
 
 class Ishchi(models.Model):
     name        = models.CharField(max_length=100, verbose_name="Ism")

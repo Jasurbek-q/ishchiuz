@@ -9,15 +9,24 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: #010103; /* Chuqur qora Apple foni */
+            /* Orqaga nafis manzarali rasm joylashtiramiz va uni xira (blur) qilamiz */
+            background-image: radial-gradient(circle at 50% 0%, rgba(0, 113, 227, 0.15), transparent),
+                              url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f5f5f7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* NAV */
+        /* NAVBAR: Silliq Glassmorphism */
         nav {
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid #e0e0e5;
+            background: rgba(22, 22, 23, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -26,123 +35,191 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
-            height: 52px;
+            height: 54px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
         .logo {
             font-size: 17px;
-            font-weight: 600;
-            color: #1d1d1f;
+            font-weight: 500;
+            color: #f5f5f7;
             text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
         .nav-btn {
             background: #0071e3;
             color: white;
-            padding: 8px 18px;
+            padding: 6px 14px;
             border-radius: 980px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background 0.2s;
+            font-size: 13px;
+            font-weight: 400;
+            transition: all 0.2s ease;
         }
-        .nav-btn:hover { background: #0077ed; }
+        .nav-btn:hover {
+            background: #147ce5;
+            transform: scale(1.02);
+        }
 
-        /* HERO */
+        /* Logout tugmasini ham skromniy qilish */
+        .logout-form button {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #86868b;
+            padding: 5px 12px;
+            border-radius: 980px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .logout-form button:hover {
+            color: #ff453a;
+            border-color: #ff453a;
+            background: rgba(255, 69, 58, 0.05);
+        }
+
+        /* HERO: Maksimal darajada vaznsiz va bosiq */
         .hero {
             text-align: center;
-            padding: 80px 24px 50px;
+            padding: 100px 24px 60px;
         }
         .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #1d1d1f;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: #f5f5f7;
+            line-height: 1.08;
         }
         .hero p {
-            font-size: 19px;
-            color: #6e6e73;
-            margin-top: 12px;
+            font-size: 21px;
+            color: #86868b;
+            margin-top: 16px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
-        /* SEARCH */
+        /* SEARCH BAR: Elegant va sodda */
         .search-wrap {
-            max-width: 500px;
-            margin: 32px auto 0;
+            max-width: 480px;
+            margin: 40px auto 0;
             display: flex;
-            gap: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 980px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .search-wrap:focus-within {
+            border-color: #0071e3;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+            background: rgba(255, 255, 255, 0.1);
         }
         .search-wrap input {
             flex: 1;
-            padding: 12px 18px;
-            border: 1px solid #d2d2d7;
-            border-radius: 980px;
-            font-size: 15px;
-            outline: none;
-            background: white;
-        }
-        .search-wrap input:focus { border-color: #0071e3; }
-        .search-wrap button {
-            background: #1d1d1f;
-            color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 12px 22px;
-            border-radius: 980px;
+            background: transparent;
             font-size: 15px;
+            color: white;
+            outline: none;
+        }
+        .search-wrap input::placeholder { color: #6e6e73; }
+        .search-wrap button {
+            background: #ffffff;
+            color: #1d1d1f;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .search-wrap button:hover {
+            background: #f5f5f7;
+            transform: scale(0.98);
         }
 
-        /* GRID */
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+        /* GRID TIZIMI */
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px 24px 60px; }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
         }
 
-        /* CARD */
+        /* CARD: To'liq Shaffof Apple uslubi (Shaffof Glass) */
         .card {
-            background: white;
-            border-radius: 18px;
+            background: rgba(22, 22, 23, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            background: rgba(22, 22, 23, 0.75);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #161617;
+            position: relative;
         }
         .card img {
             width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .card-body { padding: 20px; }
+        .card:hover img {
+            transform: scale(1.04); /* Ichki rasmning silliq yaqinlashishi */
+        }
+
+        .card-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+
         .card-name {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 19px;
+            font-weight: 500;
+            color: #f5f5f7;
+            letter-spacing: -0.01em;
         }
         .card-soha {
-            display: inline-block;
-            margin-top: 8px;
-            background: #f5f5f7;
-            color: #0071e3;
-            font-size: 13px;
+            align-self: flex-start;
+            margin-top: 10px;
+            background: rgba(0, 113, 227, 0.12);
+            color: #2997ff; /* Apple yorqin ko'k rangi */
+            font-size: 12px;
             padding: 4px 12px;
             border-radius: 980px;
             font-weight: 500;
         }
         .card-age {
-            font-size: 14px;
-            color: #6e6e73;
-            margin-top: 10px;
+            font-size: 13px;
+            color: #86868b;
+            margin-top: 12px;
         }
         .card-desc {
             font-size: 14px;
-            color: #6e6e73;
+            color: #86868b;
             margin-top: 8px;
             line-height: 1.5;
             display: -webkit-box;
@@ -151,20 +228,27 @@
             overflow: hidden;
         }
 
+        /* BO'SH HOLAT */
         .empty {
             text-align: center;
             padding: 80px;
-            color: #6e6e73;
-            font-size: 18px;
+            color: #86868b;
+            font-size: 16px;
+            background: rgba(22, 22, 23, 0.4);
+            border-radius: 22px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
         }
+        .empty a { color: #2997ff; text-decoration: none; }
+        .empty a:hover { text-decoration: underline; }
 
+        /* FOOTER */
         footer {
             text-align: center;
             padding: 40px;
             color: #6e6e73;
-            font-size: 13px;
-            border-top: 1px solid #e0e0e5;
-            margin-top: 40px;
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
@@ -173,7 +257,13 @@
 <nav>
     <div class="nav-inner">
         <a href="{% url 'home' %}" class="logo">IshPlatforma</a>
-        <a href="{% url 'create' %}" class="nav-btn">+ Elon qo'yish</a>
+        <div class="nav-right">
+            <a href="{% url 'create' %}" class="nav-btn">+ E'lon qo'yish</a>
+            <form method="post" action="{% url 'chiqish' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit">Chiqish</button>
+            </form>
+        </div>
     </div>
 </nav>
 
@@ -193,11 +283,13 @@
     <div class="grid">
         {% for ishchi in ishchilar %}
         <a href="{% url 'detail' ishchi.pk %}" class="card">
-            {% if ishchi.rasm %}
-                <img src="{{ ishchi.rasm.url }}" alt="{{ ishchi.name }}">
-            {% else %}
-                <div style="height:220px;background:#f5f5f7;display:flex;align-items:center;justify-content:center;font-size:60px;">👤</div>
-            {% endif %}
+            <div class="image-container">
+                {% if ishchi.rasm %}
+                    <img src="{{ ishchi.rasm.url }}" alt="{{ ishchi.name }}">
+                {% else %}
+                    <div style="height:100%; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; font-size:50px; color: rgba(255,255,255,0.2);">👤</div>
+                {% endif %}
+            </div>
             <div class="card-body">
                 <div class="card-name">{{ ishchi.name }} {{ ishchi.surname }}</div>
                 <span class="card-soha">{{ ishchi.sohasi }}</span>
@@ -206,8 +298,8 @@
             </div>
         </a>
         {% empty %}
-        <div class="empty" style="grid-column:1/-1">
-            Hozircha elon yo'q. <a href="{% url 'create' %}">Birinchi bo'ling!</a>
+        <div class="empty" style="grid-column: 1 / -1">
+            Hozircha e'lon yo'q. <a href="{% url 'create' %}">Birinchi bo'ling!</a>
         </div>
         {% endfor %}
     </div>
